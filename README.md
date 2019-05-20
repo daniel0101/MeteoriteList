@@ -1,4 +1,4 @@
-# meteorite-list
+# MeteoriteList
 
 ## Project setup
 ```
