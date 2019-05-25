@@ -1,5 +1,5 @@
-# meteorite-list
-
+# MeteoriteList
+A Project to list Meteorite Landings
 ## Project setup
 ```
 npm install
