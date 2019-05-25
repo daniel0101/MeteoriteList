@@ -1,16 +1,16 @@
 <template>
-    <div class="m-16">
-        <table class="w-full text-left table-collapse">
+    <div class="sm:m-16 ml-3 mt-10">
+        <table class="w-full text-left table-auto table-collapse">
             <tr>
                 <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Name</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Id</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Name Type</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Rec Class</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Id</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Name Type</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Rec Class</th>
                 <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Mass(g)</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Fall</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Year</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Latitude</th>
-                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Longitude</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Fall</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Year</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Latitude</th>
+                <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Longitude</th>
             </tr>
             <tbody>
                 <Meteorite v-for="list in lists" :key="list.id" :meteorite="list"> </Meteorite>
