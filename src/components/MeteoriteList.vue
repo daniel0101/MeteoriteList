@@ -1,6 +1,7 @@
 <template>
     <div class="sm:m-16 ml-3 mt-10">
-        <table class="w-full text-left table-auto table-collapse">
+        <Loader v-if="loading" />
+        <table v-else class="w-full text-left table-auto table-collapse">
             <tr>
                 <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">Name</th>
                 <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Id</th>
@@ -13,7 +14,10 @@
                 <th class="text-sm font-semibold text-gray-700 p-2 bg-gray-100 hidden sm:table-cell">Longitude</th>
             </tr>
             <tbody>
-                <Meteorite v-for="list in lists" :key="list.id" :meteorite="list"> </Meteorite>
+                <div v-if="isEmpty" class="mt-3">
+                    <p class="text-lg font-bold">No content(s) found for <span class="text-blue-500">{{query}}</span></p>
+                </div>                
+                <Meteorite v-else v-for="list in lists" :key="list.id" :meteorite="list"> </Meteorite>
             </tbody>
         </table>
     </div>
@@ -21,21 +25,26 @@
 <script>
 import axios from 'axios';
 import Meteorite from './Meteorite.vue';
+import Loader from './Loading.vue';
 export default {
     name: 'List',
     components:{
-        Meteorite
+        Meteorite,
+        Loader
     },
     data: function(){       
         return {
             lists: [],
             allLists: [],
-            query:''
+            query:'',
+            loading: true,
+            isEmpty: false
         }
     },
     mounted: function (){
         axios.get('https://data.nasa.gov/resource/gh4g-9sfh.json')
         .then(response =>{
+            this.loading = false;
             this.lists = response.data;
             this.allLists = response.data;
         })
@@ -43,13 +52,21 @@ export default {
 
         //listen for the search event here --from the Search component
         this.$root.$on('search', (query) => {
+            //set query to local data
+            this.query = query;
+
+            this.isEmpty = false;
             // alert(query);
             //convert query to small letter
             query = query.toLowerCase();
             //filter search query in result
             this.lists = this.allLists.filter((meteorite)=>{
                 return meteorite.name.toLowerCase().indexOf(query) != -1
-            });           
+            });
+
+            if(this.lists.length ===0){
+                this.isEmpty = true;
+            }           
          })
     },
     methods: {
