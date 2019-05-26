@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input type="text" class="w-8/12 sm:w-5/12 p-2 rounded-l border-none shadow-lg" v-model="query" v-on:keyup="search">
-        <button class="bg-blue-500 p-2 shadow-lg rounded-r text-white" v-on:click="search">Search</button>
+        <input type="text" class="w-8/12 sm:w-5/12 p-2 rounded border-none shadow-lg" v-model="query" v-on:keyup="search" placeholder="Search Meteorite Landings">
+        <!-- <button class="bg-blue-500 p-2 shadow-lg rounded-r text-white" v-on:click="search">Search</button> -->
     </div>
 </template>
 <script>
