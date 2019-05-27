@@ -45,6 +45,10 @@ export default {
         axios.get('https://data.nasa.gov/resource/gh4g-9sfh.json')
         .then(response =>{
             this.loading = false;
+            response.data.forEach((meteorite)=>{
+                var date = new Date(meteorite.year);
+                meteorite.year = date.getFullYear();
+            })
             this.lists = response.data;
             this.allLists = response.data;
         })
