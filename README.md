@@ -1,5 +1,6 @@
 # MeteoriteList
 A Project to list Meteorite Landings
+You can check it out [https://meteorite-explorer.netlify.com/](https://meteorite-explorer.netlify.com/)
 ## Project setup
 ```
 npm install
